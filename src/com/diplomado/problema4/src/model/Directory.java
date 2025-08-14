@@ -13,6 +13,24 @@ public class Directory implements Element {
 		this.subElements = subElements;
 	}
 
+	@Override
+	public long getWeight() {
+		long totalWeight = 0;
+		for (Element element : this.subElements) {
+			totalWeight += element.getWeight();
+		}
+		return totalWeight;
+	}
+
+	@Override
+	public String printHierarchy(String indent) {
+		String fullHierarchy = "";
+		for (Element element : this.subElements) {
+			fullHierarchy += (indent + element.getName() + "\r\n" + element.printHierarchy(indent + "--"));
+		}
+		return fullHierarchy;
+	}
+
 	public boolean deleteElement(String elementName) {
 		Element elementDelete = null;
 		for (Element element : this.subElements) {
@@ -64,25 +82,6 @@ public class Directory implements Element {
 	@Override
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	@Override
-	public long getWeight() {
-		long totalWeight = 0;
-		for (Element element : this.subElements) {
-			totalWeight += element.getWeight();
-		}
-		return totalWeight;
-	}
-
-	@Override
-	public String printHierarchy(String indent) {
-		String fullHierarchy = "";
-		for (Element element : this.subElements) {
-			fullHierarchy += (indent + element.getName() + "\r\n");
-			fullHierarchy += element.printHierarchy(indent + "--");
-		}
-		return fullHierarchy;
 	}
 
 }
