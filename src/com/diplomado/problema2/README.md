@@ -33,11 +33,58 @@ Se implementó el patrón **Builder** (patrón creacional) para resolver el prob
 
 ### Estructura del Código
 
-```
-problema2/
-├── model/              # Modelos de datos
-├── service/            # Lógica de negocio
-└── README.md           # Documentación
+```mermaid
+classDiagram
+    class Report {
+        -String title
+        -boolean includeCover
+        -boolean includeCharts
+        -boolean includeTransactionsTable
+        -boolean includeTrendAnalysis
+        -boolean includeFooter
+        -String advisorName
+        -String advisorContact
+        +String getTitle()
+        +boolean isIncludeCover()
+        +boolean isIncludeCharts()
+        +boolean isIncludeTransactionsTable()
+        +boolean isIncludeTrendAnalysis()
+        +boolean isIncludeFooter()
+        +String getAdvisorName()
+        +String getAdvisorContact()
+        +String toString()
+    }
+    
+    class ReportBuilder {
+        -String title
+        -boolean includeCover
+        -boolean includeCharts
+        -boolean includeTransactionsTable
+        -boolean includeTrendAnalysis
+        -boolean includeFooter
+        -String advisorName
+        -String advisorContact
+        +ReportBuilder(String title)
+        +withCover() Builder
+        +withCharts() Builder
+        +withTransactionsTable() Builder
+        +withTrendAnalysis() Builder
+        +withFooter(String, String) Builder
+        +build() Report
+    }
+    
+    class ReportGeneratorService {
+        +generateReport(Report) String
+    }
+    
+    class Main {
+        +main(String[]) void
+    }
+    
+    ReportBuilder ..> Report : builds
+    ReportGeneratorService ..> Report : uses
+    Main ..> Report : uses
+    Main ..> ReportGeneratorService : uses
 ```
 
 ## 🚀 Uso
