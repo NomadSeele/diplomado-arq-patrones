@@ -1,6 +1,6 @@
-package model;
+package src.com.diplomado.problema4.model;
 
-import java.util.ArrayList;
+import java.text.MessageFormat;
 
 public class File implements Element {
 
@@ -13,14 +13,17 @@ public class File implements Element {
 		this.weight = fWeight;
 	}
 
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
+    @Override
 	public void setName(String fName) {
 		this.name = fName;
 	}
 
+	@Override
 	public long getWeight() {
 		return weight;
 	}
@@ -30,17 +33,8 @@ public class File implements Element {
 	}
 
 	@Override
-	public String printHierarchy(String indent) {
-		return "";
-	}
-
-	@Override
-	public ArrayList<Element> getSubElements() {
-		return null;
-	}
-
-	@Override
-	public void setSubElements(ArrayList<Element> fSubElements) {
+	public String displayInfo(String indent) {
+		return MessageFormat.format("{0}{1}{2}", indent, this.name, "\r\n");
 	}
 
 }

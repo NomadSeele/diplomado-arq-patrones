@@ -1,5 +1,6 @@
-package model;
+package src.com.diplomado.problema4.model;
 
+import java.text.MessageFormat;
 import java.util.ArrayList;
 
 public class Directory implements Element {
@@ -14,6 +15,16 @@ public class Directory implements Element {
 	}
 
 	@Override
+	public String getName() {
+		return this.name;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	@Override
 	public long getWeight() {
 		long totalWeight = 0;
 		for (Element element : this.subElements) {
@@ -22,11 +33,23 @@ public class Directory implements Element {
 		return totalWeight;
 	}
 
-	@Override
+	public ArrayList<Element> getSubElements() {
+		return this.subElements;
+	}
+
+	public void setSubElements(ArrayList<Element> fSubElements) {
+		this.subElements = fSubElements;
+	}
+
 	public String printHierarchy(String indent) {
-		String fullHierarchy = "";
+		return displayInfo(indent);
+	}
+
+	@Override
+	public String displayInfo(String indent) {
+		String fullHierarchy = MessageFormat.format("{0}{1}{2}", indent, this.name, "\r\n");
 		for (Element element : this.subElements) {
-			fullHierarchy += (indent + element.getName() + "\r\n" + element.printHierarchy(indent + "--"));
+			fullHierarchy += element.displayInfo(indent + "--");
 		}
 		return fullHierarchy;
 	}
@@ -48,13 +71,13 @@ public class Directory implements Element {
 	}
 
 	public boolean moveElement(String elementName, String subDirectory) {
-		Element elementDir = null;
+		Directory elementDir = null;
 		Element elementMove = null;
 		for (Element element : this.subElements) {
 			if (element.getName().equals(elementName))
 				elementMove = element;
 			if (element.getName().equals(subDirectory))
-				elementDir = element;
+				elementDir = (Directory)element;
 		}
 
 		return elementDir != null
@@ -62,26 +85,6 @@ public class Directory implements Element {
 						? (this.subElements.remove(elementMove) && elementDir.getSubElements().add(elementMove))
 						: false
 				: false;
-	}
-
-	@Override
-	public ArrayList<Element> getSubElements() {
-		return this.subElements;
-	}
-
-	@Override
-	public void setSubElements(ArrayList<Element> fSubElements) {
-		this.subElements = fSubElements;
-	}
-
-	@Override
-	public String getName() {
-		return this.name;
-	}
-
-	@Override
-	public void setName(String name) {
-		this.name = name;
 	}
 
 }

@@ -1,9 +1,11 @@
+package src.com.diplomado.problema4;
+
 import java.util.ArrayList;
 
-import model.Directory;
-import model.Element;
-import model.File;
-import model.Shortcut;
+import src.com.diplomado.problema4.model.Directory;
+import src.com.diplomado.problema4.model.Element;
+import src.com.diplomado.problema4.model.File;
+import src.com.diplomado.problema4.model.Shortcut;
 
 public class Main {
 	public static void main(String[] args) {
@@ -29,25 +31,25 @@ public class Main {
 //		  f---F_0102
 //		  f---F_0103
 
-		ArrayList<Element> arrayListDIR_0101 = new ArrayList<Element>();
+		ArrayList<Element> arrayListDIR_0101 = new ArrayList<>();
 		arrayListDIR_0101.add(new File("F_010101", 4567));
 		arrayListDIR_0101.add(new File("F_010102", 67));
 		arrayListDIR_0101.add(new File("F_010103", 345));
 		arrayListDIR_0101.add(new Shortcut("S_010103", 0));
 		Directory dDIR_0101 = new Directory("DIR_0101", arrayListDIR_0101);
-		ArrayList<Element> arrayListDIR_0102 = new ArrayList<Element>();
+		ArrayList<Element> arrayListDIR_0102 = new ArrayList<>();
 		arrayListDIR_0102.add(new File("F_010201", 6545));
 		Directory dDIR_0102 = new Directory("DIR_0102", arrayListDIR_0102);
-		ArrayList<Element> arrayListDIR_010301 = new ArrayList<Element>();
+		ArrayList<Element> arrayListDIR_010301 = new ArrayList<>();
 		arrayListDIR_010301.add(new File("F_01030101", 1234));
 		arrayListDIR_010301.add(new File("F_01030102", 2314));
 		Directory dDIR_010301 = new Directory("DIR_010301", arrayListDIR_010301);
-		ArrayList<Element> arrayListDIR_0103 = new ArrayList<Element>();
+		ArrayList<Element> arrayListDIR_0103 = new ArrayList<>();
 		arrayListDIR_0103.add(dDIR_010301);
 		arrayListDIR_0103.add(new File("F_010301", 234));
 		arrayListDIR_0103.add(new File("F_010302", 567));
 		Directory dDIR_0103 = new Directory("DIR_0103", arrayListDIR_0103);
-		ArrayList<Element> arrayListDIR_01 = new ArrayList<Element>();
+		ArrayList<Element> arrayListDIR_01 = new ArrayList<>();
 		arrayListDIR_01.add(dDIR_0101);
 		arrayListDIR_01.add(dDIR_0102);
 		arrayListDIR_01.add(dDIR_0103);

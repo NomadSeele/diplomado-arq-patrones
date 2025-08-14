@@ -1,6 +1,6 @@
-package model;
+package src.com.diplomado.problema4.model;
 
-import java.util.ArrayList;
+import java.text.MessageFormat;
 
 public class Shortcut implements Element {
 
@@ -12,30 +12,24 @@ public class Shortcut implements Element {
 		this.name = fName;
 	}
 
+	@Override
 	public String getName() {
 		return this.name;
 	}
 
+	@Override
 	public void setName(String fName) {
 		this.name = fName;
 	}
 
+	@Override
 	public long getWeight() {
 		return weight;
 	}
 
 	@Override
-	public String printHierarchy(String indent) {
-		return "";
-	}
-
-	@Override
-	public ArrayList<Element> getSubElements() {
-		return null;
-	}
-
-	@Override
-	public void setSubElements(ArrayList<Element> fSubElements) {
+	public String displayInfo(String indent) {
+		return MessageFormat.format("{0}{1}{2}", indent, this.name, "\r\n");
 	}
 
 }
